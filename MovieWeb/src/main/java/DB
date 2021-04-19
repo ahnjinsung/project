@@ -1,0 +1,98 @@
+create table movies(
+	movNo number(10,0) not null,
+	movName varchar2(50) not null,
+	movContent varchar2(2000) not null,
+	movStartDate varchar2(50) not null,
+	movEndDate varchar2(50) not null,
+	movUploadPath varchar2(100) not null,
+	movFileLoca varchar2(100) not null,
+	movFileName varchar2(100) not null,
+	movFileRealName varchar2(100) not null,
+	movMoney varchar2(20) not null
+);
+alter table movies add CONSTRAINT movies_movNo_pk PRIMARY key (movNo);
+create SEQUENCE movies_seq;
+
+
+
+create table movieUser(
+	userId varchar2(20) not null,
+	userPw varchar2(20) not null,
+	userName varchar2(30) not null,
+	userBirYear number(10,0) not null,
+	userBirMon number(10,0) not null,
+	userBirDay number(10,0) not null,
+	userPhone1 number(10,0) not null,
+	userPhone2 number(10,0) not null,
+	userPhone3 number(10,0) not null,
+	userEmail varchar2(50) not null,
+	addrZipNum varchar2(50) not null,
+	addrBasic varchar2(500) not null,
+	addrDetail varchar2(1000) not null
+);
+alter table movieUser add CONSTRAINT movieUser_userId_pk PRIMARY KEY (userId);
+
+
+
+
+create table userLogin(
+	userId varchar2(20) not null,
+	userLoginDate date DEFAULT sysdate,
+	userLoginIp varchar2(30) not null
+);
+alter table userLogin add CONSTRAINT userLogin_userId_pk PRIMARY KEY (userId);
+
+create table movieAdmin(
+	adminId varchar2(30) not null,
+	adminPw varchar2(30) not null
+);
+
+
+create table userHelp(
+	uhNo number(10,0) not null,
+	userId varchar2(20) not null,
+	uhTitle varchar2(200) not null,
+	uhOption varchar2(30) not null,
+	uhContent varchar2(2000) not null,
+	uhDate date DEFAULT sysdate,
+	uhCheck varchar2(30) not null
+);
+alter table userHelp add CONSTRAINT userHelp_uhNo_pk PRIMARY KEY (uhNo);
+create SEQUENCE userHelp_seq;
+
+create table userHelpRep(
+	uhNo number(10,0) not null,
+	uhRepNo number(10,0) not null,
+	uhRepContent varchar2(2000) not null,
+	uhRepRegdate date DEFAULT sysdate
+);
+alter table userHelpRep CONSTRAINT userHelpRep_uhRepNo_pk PRIMARY KEY (uhRepNo);
+create SEQUENCE userHelpRep_seq;
+
+
+create table moviePre(
+	rsvNo number(10,0) not null,
+	userId varchar2(20) not null,
+	movName varchar2(50) not null,
+	mrPlace varchar2(30) not null,
+	mrTime varchar2(20) not null,
+	mrDate varchar2(30) not null,
+	mrSit varchar2(1000) not null,
+	rsvPay number(10,0) not null,
+	mrPeo number(10,0) not null
+);
+alter table moviePre add CONSTRAINT moviePre_rsvNo_pk PRIMARY KEY (rsvNo);
+create SEQUENCE moviePre_seq;
+
+
+
+
+create table movieRep(
+	movRepNo number(10,0) not null,
+	movNo number(10,0) not null,
+	userId varchar2(20) not null,
+	movRepContent varchar2(1000) not null,
+	movRepRegdate date DEFAULT sysdate
+);
+alter table movieRep add CONSTRAINT movieRep_movRepNo_pk primary key(movRepNo);
+create sequence movieRep_seq;

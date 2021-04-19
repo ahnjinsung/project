@@ -1,0 +1,908 @@
+/*!
+ * Datetimepicker for Bootstrap 3
+ * ! version : 4.7.14
+ * https://github.com/Eonasdan/bootstrap-datetimepicker/
+ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.bootstrap-datetimepicker-widget {
+  list-style: none;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu {
+  margin: 2px 0;
+  padding: 4px;
+  width: 19em;
+}
+@media (min-width: 2px) {
+  .bootstrap-datetimepicker-widget.dropdown-menu.timepicker-sbs {
+    width: 38em;
+  }
+}
+@media (min-width: 992px) {
+  .bootstrap-datetimepicker-widget.dropdown-menu.timepicker-sbs {
+    width: 38em;
+  }
+}
+@media (min-width: 1200px) {
+  .bootstrap-datetimepicker-widget.dropdown-menu.timepicker-sbs {
+    width: 38em;
+  }
+}
+.bootstrap-datetimepicker-widget.dropdown-menu:before,
+.bootstrap-datetimepicker-widget.dropdown-menu:after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu.bottom:before {
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #cccccc;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  top: -7px;
+  left: 7px;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu.bottom:after {
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid white;
+  top: -6px;
+  left: 8px;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu.top:before {
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #cccccc;
+  border-top-color: rgba(0, 0, 0, 0.2);
+  bottom: -7px;
+  left: 6px;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu.top:after {
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid white;
+  bottom: -6px;
+  left: 7px;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu.pull-right:before {
+  left: auto;
+  right: 6px;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu.pull-right:after {
+  left: auto;
+  right: 7px;
+}
+.bootstrap-datetimepicker-widget .list-unstyled {
+  margin: 0;
+}
+.bootstrap-datetimepicker-widget a[data-action] {
+  padding: 6px 0;
+}
+.bootstrap-datetimepicker-widget a[data-action]:active {
+  box-shadow: none;
+}
+.bootstrap-datetimepicker-widget .timepicker-hour,
+.bootstrap-datetimepicker-widget .timepicker-minute,
+.bootstrap-datetimepicker-widget .timepicker-second {
+  width: 54px;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 0;
+}
+.bootstrap-datetimepicker-widget button[data-action] {
+  padding: 6px;
+}
+.bootstrap-datetimepicker-widget .btn[data-action="incrementHours"]::after {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  content: "Increment Hours";
+}
+.bootstrap-datetimepicker-widget .btn[data-action="incrementMinutes"]::after {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  content: "Increment Minutes";
+}
+.bootstrap-datetimepicker-widget .btn[data-action="decrementHours"]::after {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  content: "Decrement Hours";
+}
+.bootstrap-datetimepicker-widget .btn[data-action="decrementMinutes"]::after {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  content: "Decrement Minutes";
+}
+.bootstrap-datetimepicker-widget .btn[data-action="showHours"]::after {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  content: "Show Hours";
+}
+.bootstrap-datetimepicker-widget .btn[data-action="showMinutes"]::after {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  content: "Show Minutes";
+}
+.bootstrap-datetimepicker-widget .btn[data-action="togglePeriod"]::after {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  content: "Toggle AM/PM";
+}
+.bootstrap-datetimepicker-widget .btn[data-action="clear"]::after {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  content: "Clear the picker";
+}
+.bootstrap-datetimepicker-widget .btn[data-action="today"]::after {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  content: "Set the date to today";
+}
+.bootstrap-datetimepicker-widget .picker-switch {
+  text-align: center;
+}
+.bootstrap-datetimepicker-widget .picker-switch::after {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  content: "Toggle Date and Time Screens";
+}
+.bootstrap-datetimepicker-widget .picker-switch td {
+  padding: 0;
+  margin: 0;
+  height: auto;
+  width: auto;
+  line-height: inherit;
+}
+.bootstrap-datetimepicker-widget .picker-switch td span {
+  line-height: 2.5;
+  height: 2.5em;
+  width: 100%;
+}
+.bootstrap-datetimepicker-widget table {
+  width: 100%;
+  margin: 0;
+}
+.bootstrap-datetimepicker-widget table td,
+.bootstrap-datetimepicker-widget table th {
+  text-align: center;
+  border-radius: 4px;
+}
+.bootstrap-datetimepicker-widget table th {
+  height: 20px;
+  line-height: 20px;
+  width: 20px;
+}
+.bootstrap-datetimepicker-widget table th.picker-switch {
+  width: 145px;
+}
+.bootstrap-datetimepicker-widget table th.disabled,
+.bootstrap-datetimepicker-widget table th.disabled:hover {
+  background: none;
+  color: #777777;
+  cursor: not-allowed;
+}
+.bootstrap-datetimepicker-widget table th.prev::after {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  content: "Previous Month";
+}
+.bootstrap-datetimepicker-widget table th.next::after {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  content: "Next Month";
+}
+.bootstrap-datetimepicker-widget table thead tr:first-child th {
+  cursor: pointer;
+}
+.bootstrap-datetimepicker-widget table thead tr:first-child th:hover {
+  background: #eeeeee;
+}
+.bootstrap-datetimepicker-widget table td {
+  height: 54px;
+  line-height: 54px;
+  width: 54px;
+}
+.bootstrap-datetimepicker-widget table td.cw {
+  font-size: .8em;
+  height: 20px;
+  line-height: 20px;
+  color: #777777;
+}
+.bootstrap-datetimepicker-widget table td.day {
+  height: 20px;
+  line-height: 20px;
+  width: 20px;
+}
+.bootstrap-datetimepicker-widget table td.day:hover,
+.bootstrap-datetimepicker-widget table td.hour:hover,
+.bootstrap-datetimepicker-widget table td.minute:hover,
+.bootstrap-datetimepicker-widget table td.second:hover {
+  background: #eeeeee;
+  cursor: pointer;
+}
+.bootstrap-datetimepicker-widget table td.old,
+.bootstrap-datetimepicker-widget table td.new {
+  color: #777777;
+}
+.bootstrap-datetimepicker-widget table td.today {
+  position: relative;
+}
+.bootstrap-datetimepicker-widget table td.today:before {
+  content: '';
+  display: inline-block;
+  border: 0 0 7px 7px solid transparent;
+  border-bottom-color: #337ab7;
+  border-top-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+}
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover {
+  background-color: #337ab7;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.bootstrap-datetimepicker-widget table td.active.today:before {
+  border-bottom-color: #fff;
+}
+.bootstrap-datetimepicker-widget table td.disabled,
+.bootstrap-datetimepicker-widget table td.disabled:hover {
+  background: none;
+  color: #777777;
+  cursor: not-allowed;
+}
+.bootstrap-datetimepicker-widget table td span {
+  display: inline-block;
+  width: 54px;
+  height: 54px;
+  line-height: 54px;
+  margin: 2px 1.5px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.bootstrap-datetimepicker-widget table td span:hover {
+  background: #eeeeee;
+}
+.bootstrap-datetimepicker-widget table td span.active {
+  background-color: #337ab7;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.bootstrap-datetimepicker-widget table td span.old {
+  color: #777777;
+}
+.bootstrap-datetimepicker-widget table td span.disabled,
+.bootstrap-datetimepicker-widget table td span.disabled:hover {
+  background: none;
+  color: #777777;
+  cursor: not-allowed;
+}
+.bootstrap-datetimepicker-widget.usetwentyfour td.hour {
+  height: 27px;
+  line-height: 27px;
+}
+.bootstrap-datetimepicker-widget.wider {
+  width: 21em;
+}
+.bootstrap-datetimepicker-widget .datepicker-decades .decade {
+  line-height: 1.8em !important;
+}
+.input-group.date .input-group-addon {
+  cursor: pointer;
+}
+
+//여기까지가 날짜
+
+	/* 모든 패딩마진값을 0으로 초기화시키고 시작 */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+         }
+        body, html {
+            width: 100%;
+            font-family: 'Noto Sans KR', sans-serif;
+	
+        }
+        img {
+            max-width: 100%; /*사이즈가 줄더라도 100%넓이를 유지*/
+            height: auto; /*사이즈가 줄더라도 높이 유지*/
+        }
+        /*브라우저별로 고유하게 적용되어 있는 form요소들을 제거해서 여러브라우저에서 동일한 디자인으로 처리*/
+        input, textarea, button, select {
+            -webkit-appearance:none;
+            -moz-appearance:none;
+            appearance:none;
+            border:none;
+        }
+        ul, li, ol, dl {
+            list-style: none; /*순서 요소들의 리스트 스타일을 제거*/
+        }
+        
+        .btn, .form-control {
+	        border-radius: 0; /*form-control클래스의 윤곽 0*/
+    	}
+        
+/*=============== 헤더 디자인 시작지점 ===============*/
+        #header-link li{
+            border-left-style: solid;
+            border-color: #bbb6b6;
+        }
+        .login{
+            border-right-style: solid;
+            border-color: #bbb6b6;
+        }
+        header {
+            position: fixed;
+            z-index: 50; /*postion을 이용하면 요소들이 겹치는 현상이 발생하는데, 숫자가 제일 높은값이 위로 뜨게됨*/
+            left:0; /*left, right중 하나*/
+            top:0; /*top, bottom중 하나*/
+            width: 100%; /*넓이를 100%*/
+        }
+        /*헤더가 postion으로 올라오면 section태그가 잘리는 현상을 방지하기 위해 헤더의 세로길이만큼 margin*/
+        section {
+            margin-top: 50px;
+        }
+/* ===============헤더 디자인 끝 ===============*/
+
+/*=============== (인기작,최신,개봉예정) 토글버튼 ===============*/
+	.carousel-inner img{
+            width: 100%;
+        }
+        .section_no2{
+            background: #f2f2f2;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .section2_toggleBox {
+            overflow: hidden;  
+            margin-left: 580px;
+        }
+        
+        
+        .section2_toggleBox .inner {
+            float: left;
+            width: 16.666%;
+            /*border, padding, width더한 값이 실제 요소의 크기*/
+            /*박스크기가 넘지 않도록 처리 할 수 있는 속성*/
+            box-sizing: border-box; 
+            
+        }
+        .section_no2 ul li{ 
+            width: auto;
+            height: 40px;     
+        }
+        
+        .section2_toggleBox li a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #CCC;
+            background: white;  
+            text-align: center;
+            text-decoration: none;
+            color: #1614148a;
+            
+        }
+
+        .section2_toggleBox li a.on, 
+        .section2_toggleBox li a:hover, 
+        .section2_toggleBox li a:focus {
+            background-color: #16141454;
+        }
+/*=============== (인기작,최신,개봉예정) 토글버튼 끝 ===============*/
+
+/*=============== (인기작,최신,개봉예정) 영화목록 ===============*/
+      
+	.tab-content img{
+            width:  250px;
+        }
+        .tab-content .row{
+            margin: 10px;
+            float: left;
+        }
+/*=============== (인기작,최신,개봉예정) 영화목록끝 ===============*/
+
+
+/*============ 무비Pre 영역 ============*/
+        .movie_select{
+            position: absolute;
+            right: 70%;
+            top: 40%;
+        }
+        .maker_gang{
+            position: absolute;
+            right: 48%;
+            top: 55%;
+        }
+        .maker_zong{
+            position: absolute;
+            right: 50%;
+            top: 42%;
+        }
+        .maker_no{
+            position: absolute;
+            right: 43%;
+            top: 40%;
+        }
+        .maker_hong{
+            position: absolute;
+            right: 52%;
+            top: 46%;
+        }
+        .maker_book{
+            position: absolute;
+            right: 46%;
+            top: 28%;
+        }
+        .maker_gang_active{
+            position: absolute;
+            right: 48%;
+            top: 55%;
+        }
+        .maker_zong_active{
+            position: absolute;
+            right: 50%;
+            top: 42%;
+        }
+        .maker_no_active{
+            position: absolute;
+            right: 43%;
+            top: 40%;
+        }
+        .maker_hong_active{
+            position: absolute;
+            right: 52%;
+            top: 46%;
+        }
+        .maker_book_active{
+            position: absolute;
+            right: 46%;
+            top: 28%;
+        }
+        .form-group1{
+            position: absolute;
+            width: 20%;
+            right: 47%;
+        }
+        button.on{ 
+            background-color: black;
+            color: aliceblue;
+        }
+/*============ 무비Pre 영역 끝============*/
+
+
+
+
+
+
+
+
+/* ============== 모달 바디 영역 ==============*/
+        /* close버튼 */
+        .modal_header .close{
+            margin-right: 10px;
+            font-size: 50px;
+        }
+        /* 이미지크기 */
+        
+        .modal_body_top img{
+            width: 250px;
+        }
+        
+        .modal_body,
+        .modal_body_top{
+            padding: 10px;
+            margin: 10px;
+        }
+        .modal_body_top{
+            overflow: hidden;
+        }
+        .modal_body_inner,
+        .modal_body_inner2{
+            float: left;
+        }
+        .modal_body_inner{
+            margin-left: 50px;
+            margin-right: 25px;
+        }
+        .modal_body_inner2{
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        .modal_movie_button{
+            float: left;
+            position: relative;
+            top: 55px;
+            left: 20%;
+        }
+        
+        .modal_body_mid{
+            margin-top: 30px;
+        }
+/* ============== 모달 바디 영역 끝 ==============*/
+        
+/* ============== 모달 댓글 영역 ==============*/
+        .modal_footer{
+            padding-top: 0px;
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-bottom: 50px;
+        }
+        
+        .modal_footer_write{
+            overflow: hidden;
+        }
+        .movie_rep_content{
+            float: left;
+        }
+        #rep_comment{
+            height: 80px;
+            width: 700px;
+            resize: none; /* 사용자 임의 변경 불가 */
+        }
+        .movie_rep_button{
+            width: 80px;
+            height: 80px;
+        }
+        
+        .modal_reply_list{
+            overflow: hidden;
+        }
+        
+        .modal_reply_inner{
+            float: left;
+        }
+        .modal_reply_date{
+            margin-top: 30px;
+            margin-left: 10px;
+        }
+        .modal_reply_del{
+            position: absolute;
+            left: 77%;
+        }
+/* ============== 모달 댓글 영역 끝 ==============*/ 
+
+
+/* ===============  movieList페이지 ============== */
+        div h3 {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 180px;
+          height: 35px;
+        }
+/* ===============  movieList 페이지 끝 ===============  */
+
+	
+
+
+/* ============= 회원가입 =============*/
+        .userform{
+            background: #f2f2f2;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            
+        }
+        .userjoin{
+            position: absolute;
+            left: 50%;
+        }
+        
+        .joinBtn{
+            border-color: #263238;
+            background-color: #263238;
+        }
+        .joinBtn:hover{
+            border-color: #263238ab;
+            background-color: #263238ab;
+        }
+/* ============= 회원가입 끝 =============*/
+/* ================ userJoin_ok페이지 ================ */     
+        .userform{
+            background: #f2f2f2;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        
+        .userjoin_ok{
+            width: 500px; 
+            margin-left: 200px;
+
+        }
+        .userjoin_btn{
+            margin-left: 250px;
+        }
+/* ================ userJoin_ok페이지 끝 ================ */ 
+
+
+
+
+
+/*=============== 로그인 폼 ===============*/
+        .login-form {
+            margin: 0 auto;
+            float: none;
+        }
+        
+        .login-form form{
+            padding: 100px;
+            border-radius: 8px;
+            margin-bottom: 100px;
+        }
+/*=============== 로그인 폼 끝 ===============*/
+
+
+/*================== userPage 시작 ==============*/  
+        .userPage{
+            padding-top: 50px;
+            padding-bottom: 50px;
+            left: 30%;
+        }
+/*================== userPage 끝 ==============*/    
+
+
+
+
+	
+
+/* ================ userHelpUpdate/userHelpWrite 시작 ==============*/
+        .content-wrap {
+            margin: 0 auto;
+            float: none;
+           padding: 0;
+            font-size: 15px;
+        }
+        .helpTitlebox {
+            width: 250px;
+            text-align: center;
+            margin: 70px auto; 
+            height: 40px;
+            line-height: 40px;
+            border-top: 1px solid #777;
+            border-bottom: 1px solid #777;
+        }
+        .board-table {
+            margin: 0 auto;
+            float: none 
+        }
+        
+        .board-title {
+            width: 300px;
+        }
+        
+        .table-bordered > thead > tr > th {
+            background-color: #ccc;
+            color: #777; 
+        }
+        
+        .t-control .t-title {
+            width: 100px;
+            min-width: 100px; 
+            vertical-align: middle;
+        }
+        .t-control .input{
+            width:200px;
+        }
+        .titlefoot{
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 180.5px;
+        }
+        .t-control td {
+            border-bottom: 1px solid #ddd;
+        }
+        .form-group {
+            margin: 0;
+        }
+        .form-group select {
+            width: 200px;
+        }
+/* ================ userHelpUpdate/userHelpWrte 끝 ==============*/
+
+
+/*========= userHelpDetail 시작 ===========*/
+        .helpTitlebox {
+            width: 250px;
+            text-align: center;
+            margin: 70px auto; 
+            height: 40px;
+            line-height: 40px;
+            border-top: 1px solid #777;
+            border-bottom: 1px solid #777;
+        }
+        .detailfoot{
+            text-align: center;
+            margin-top: 30px;
+        }
+        .t-control td {
+            border-bottom: 1px solid #ddd;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group .userId{
+            width: 200px;
+        }
+        .writer, .title {
+            width: 200px;
+        }
+       /* 댓글 */
+         .write-wrap, 
+        .reply-wrap {
+            margin: 0 auto;
+            float: none;
+	        padding: 0;
+            font-size: 15px;
+        }
+        .reply-wrap {
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f5f5f5;
+        }
+        .reply-input strong {
+            margin-bottom: 10px;
+        }
+        .reply-input small{
+            float: right;
+        }
+        .reply-input p{
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+/*========= userHelpDetail 끝 ===========*/
+
+
+
+
+
+/*================================ FOOTER ====================================*/
+
+        footer {
+            margin-top: 0px;
+            /*헤더의 색상과 맞춘다*/
+            background-color: black;
+            padding-top: 0px;
+            padding-bottom: 50px;
+        }
+        footer .copyright {
+            font-size: 13px; /*글씨크기*/
+            color: white; /*글씨색*/
+            line-height: 20px; /*행간*/
+        }
+        
+        footer .footer-menu li {
+            display: inline-block; /*li를 블럭성질을 가지고 가로배치*/
+            padding: 0 10px; /*패딩 좌우 10*/
+            
+        }
+        
+        footer .footer-menu li a {
+            font-size: 13px; /*글씨크기*/
+            color: white;
+        }
+        
+        /*footer(영화관 찾기)*/
+        .footer_theater{
+            margin-bottom: 20px;
+            background-color: #4e4d4d; 
+            display: block;
+            overflow: hidden;
+            width: 100%;
+            height: 300px;
+            border: 0;
+            padding-top: 20px;
+        }
+        .footer_theater div.wrap {
+            width: 10000px;
+            margin: 0 auto;
+            padding: 0px 0 0px 0;
+            overflow: hidden;
+        }
+        
+        .footer_theater div.wrap>dl {
+            position: relative;
+            padding: 0 0 15px 150px;
+        }
+        .footer_theater div.wrap>dl dt {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-weight: normal;
+        }
+        .footer_theater div.wrap>dl dd {
+            float: left;
+            padding-left: 10px;
+            line-height: 18px;
+        }
+        .footer_theater div.wrap a {
+            font-size: 12px;
+            filter: alpha(opacity=70);
+            opacity: .7;
+        }
+        .footer_theater div.wrap h4, 
+        .footer_theater div.wrap dt, 
+        .footer_theater div.wrap a {
+            color: #fff;
+        }
+        /*footer(영화관 찾기 끝)*/

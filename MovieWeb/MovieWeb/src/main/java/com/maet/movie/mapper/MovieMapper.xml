@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.maet.movie.mapper.MovieMapper">
+  	<insert id="movieInsert">
+  	insert into movies(movno,movname,movcontent,movstartdate,movenddate,movuploadpath,movfileloca,movfilename,movfilerealname,movmoney)
+  	values(movies_seq.nextval,#{movName},#{movContent},#{movStartDate},#{movEndDate},#{movUploadPath},#{movFileLoca},#{movFileName},#{movFileRealName},#{movMoney})
+  	</insert>
+  	<select id="movieList" resultType="com.maet.command.MovieVO">
+  	select * from movies order by movNo asc
+  	</select>
+  	<select id="movieOneList" resultType="com.maet.command.MovieVO">
+  	select * from movies where movNo = #{movNo}
+  	</select>
+  	<delete id="movieDelete">
+  	delete from movies where movNo = #{movNo}
+  	</delete>
+  	<select id="adminLogin" resultType="int">
+  	select count(*) from movieadmin where adminId = #{adminId} and adminPw = #{adminPw}
+  	</select>
+  	<resultMap type="com.maet.command.MovieVO" id="movieRepList">
+  		<result property="movNo" column="movNo"/>
+  		<result property="movName" column="movName"/>
+  		<result property="movContent" column="movContent"/>
+  		<result property="movStartDate" column="movStartDate"/>
+  		<result property="movEndDate" column="movEndDate"/>
+  		<result property="movUploadPath" column="movUploadPath"/>
+  		<result property="movFileLoca" column="movFileLoca"/>
+  		<result property="movFileName" column="movFileName"/>
+  		<result property="movFileRealName" column="movFileRealName"/>
+  		<result property="movMoney" column="movMoney"/>
+  		<collection property="movieRepList" resultMap="List" />
+  	</resultMap>
+  	<resultMap type="com.maet.command.MovieRepVO" id="List">
+  		<result property="movRepNo" column="movRepNo"/>
+  		<result property="movNo" column="movNo"/>
+  		<result property="userId" column="userId"/>
+  		<result property="movRepContent" column="movRepContent"/>
+  		<result property="movRepRegdate" column="movRepRegdate"/>
+  	</resultMap>
+  	
+  	
+  	<select id="movieDetail" resultMap="movieRepList">
+  	select m.movNo,
+	    movName,
+	    movContent,
+	    movStartDate,
+	    movEndDate,
+	    movUploadPath,
+	    movFileLoca,
+	    movFileName,
+	    movFileRealName,
+	    movMoney,
+	    p.movRepNo,
+	    p.userId,
+	    p.movRepContent,
+	    p.movRepRegdate
+	from movies m left join movierep p on m.movNo = p.movNo where m.movNo = #{movNo} order by p.movRepNo desc
+  	</select>
+
+  </mapper>

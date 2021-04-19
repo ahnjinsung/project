@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.maet.moviepre.mapper.MoviePreMapper">
+  	<select id="getList" resultType="com.maet.command.MoviePreVO">
+  	select * from moviePre where 
+  	movName = #{movName} and mrTime = #{mrTime} 
+  	and mrDate = #{mrDate} and mrPlace = #{mrPlace}
+  	</select>
+  	<insert id="moviePreInsert">
+  	insert into moviepre (rsvNo,userid,movname,mrplace,mrtime,mrdate,mrsit,rsvpay,mrpeo)
+  	values(moviePre_seq.nextval, #{userId},#{movName},#{mrPlace},#{mrTime},#{mrDate},#{mrSit},#{rsvPay},#{mrPeo})
+  	</insert>
+  	<select id="preList" resultType="com.maet.command.MoviePreVO">
+  	select * from moviePre order by rsvNo desc
+  	</select>
+  	<select id="myList" resultType="com.maet.command.MoviePreVO">
+  	select * from moviePre where userId = #{userId}
+  	</select>
+	<delete id="moviePreDelete">
+	delete from moviePre where rsvNo = #{rsvNo}
+	</delete>
+  </mapper>

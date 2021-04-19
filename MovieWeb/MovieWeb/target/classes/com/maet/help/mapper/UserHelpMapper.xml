@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="com.maet.help.mapper.UserHelpMapper">
+  	<!-- 등록 -->
+  	<insert id="helpRegist">
+  		insert into userHelp(uhNo, userId, uhTitle, uhOption, uhContent, uhCheck)
+  			values(userHelp_seq.nextval, #{userId}, #{uhTitle}, #{uhOption}, #{uhContent},'미등록')	
+  	</insert>
+	<select id="myList" resultType="com.maet.command.UserHelpVO">
+		select * from userhelp where userid = #{userId}
+	</select>
+
+	<select id="getList" resultType="com.maet.command.UserHelpVO">
+  		<![CDATA[
+  		select *
+		from(select rownum as rn, uhNo, userId, uhTitle, uhOption, uhContent, uhDate, uhCheck
+		     from(select * 
+		         from userHelp 
+		         order by uhNo desc
+		         )
+		) where rn > (#{pageNum}-1) * #{amount} and rn <= #{pageNum} * #{amount}
+		]]>
+  	</select> 
+  	
+  	
+	
+	<!-- 목록
+  	<select id="getList" resultType="com.maet.command.UserHelpVO">
+  		<![CDATA[
+  		select *
+		from(select rownum as rn, uhNo, userId, uhTitle, uhOption, uhContent, uhDate, uhCheck
+		     from(select * 
+		         from userHelp 
+		         order by uhNo desc
+		         )
+		) where rn > (#{pageNum}-1) * #{amount} and rn <= #{pageNum} * #{amount}
+		]]>
+  	</select> 
+  	-->
+	
+  	<!-- 전체 게시글 수 -->
+  	<select id="getTotal" resultType="int">
+  		select count(*) as total from userHelp
+  	</select>
+  	
+  	<select id="content" resultType="com.maet.command.UserHelpVO">
+  		select * from userHelp where uhNo = #{uhNo}
+  	</select>
+  	
+  	<update id="update">
+  		update userHelp set 
+  			uhDate = sysdate,
+  			userId = #{userId},
+  			uhOption = #{uhOption},
+  			uhTitle = #{uhTitle},
+  			uhContent = #{uhContent}
+  		where uhNo = #{uhNo}
+  	</update>
+  	
+  	<update id="checkUpdate">
+  		update userHelp set 
+  			uhCheck = '답변완료'
+  		where uhNo = #{uhNo}
+  	</update>
+  	
+  	
+  	<!-- 삭제처리 -->
+  	<delete id="delete">
+  		delete from userHelp where uhNo = #{uhNo}
+  	</delete>
+  	
+  </mapper>
+  
+  
